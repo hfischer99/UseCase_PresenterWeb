@@ -27,7 +27,15 @@ class ListprofessorUseCase{
             console.log('ListprofessorUseCase.findAll', fail)
         }
     }
-    
+
+    async findByName(professorName){
+        try {
+            const professor = await this.repository.findByName(this.collection, professorName)
+            this.presenter.ok(professor)
+        } catch (fail) {
+            console.log('ListprofessorUseCase.findAll', fail)
+        }
+    }
 
 
 }

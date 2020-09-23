@@ -18,6 +18,12 @@ module.exports = app => {
         listprofessorUseCase.findById(req.params.id)
     })
 
+    app.get('/professor/:name', function (req, res) {
+        // console.log('GET')
+        const listprofessorUseCase = new ListprofessorUseCase(new PresenterWEB(res), new OperatorsDB())
+        listprofessorUseCase.findByName(req.params)
+    })
+
 
     app.post('/professor', function (req, res) {
         // console.log('POST professor', req.body)

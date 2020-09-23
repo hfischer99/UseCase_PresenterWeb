@@ -45,12 +45,11 @@ class OperatorsDB extends Connection {
     async findByName(collection, name) {
         try {
 
-            const query = {"Nome": name}
+            const query = {name: this.name}
             const { client, db } = await this.getClienteMongoDB()
-            const produto = await db.collection(collection).findOne(query)
-            console.log(produto)
+            const user = await db.collection(collection).findOne(query)
             client.close()
-            return produto
+            return user
         } catch (error) {
             console.log('Operators.findByName', error)
         }

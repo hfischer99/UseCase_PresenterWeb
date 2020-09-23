@@ -27,8 +27,21 @@ class ListalunoUseCase{
             console.log('ListalunoUseCase.findAll', fail)
         }
     }
-    
 
+    async findByName(collection, name) {
+        try {
+
+            const query = {"Nome": name}
+            const { client, db } = await this.getClienteMongoDB()
+            const produto = await db.collection(collection).findOne(query)
+            console.log(produto)
+            client.close()
+            return produto
+        } catch (error) {
+            console.log('Operators.findByName', error)
+        }
+    }
+    
 
 }
 
